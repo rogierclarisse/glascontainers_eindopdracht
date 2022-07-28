@@ -1,4 +1,4 @@
-package com.example.glascontainers.ui;
+package com.example.glascontainers.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
