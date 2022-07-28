@@ -39,6 +39,7 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         //recycler view aanspreken
         RecyclerView rvLocations = view.findViewById(R.id.rv_locations);
         //horizontale lijnen

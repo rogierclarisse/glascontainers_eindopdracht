@@ -10,19 +10,18 @@
         android:id="@+id/tv_RecyclerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recycler View"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Recycler View" />
+        tools:text="Locations" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_locations"
         android:layout_width="409dp"
         android:layout_height="684dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_RecyclerTitle"
         tools:listitem="@layout/row" />

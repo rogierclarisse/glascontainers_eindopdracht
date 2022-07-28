@@ -18,12 +18,15 @@ public class ContLocAdapter extends RecyclerView.Adapter<ContLocAdapter.ContLocH
 
     class ContLocHolder extends RecyclerView.ViewHolder{
 
+//        private final TextView recyclerViewTitle;
         private final TextView titleTV;
+        private final TextView coordTV;
 
         public ContLocHolder(@NonNull View itemView) {
             super(itemView);
-            titleTV = itemView.findViewById(R.id.rv_title);
-//            bodyTV = itemView.findViewById(R.id.rv_body);
+            titleTV = itemView.findViewById(R.id.tv_title);
+            coordTV = itemView.findViewById(R.id.tv_coordinates);
+//            recyclerViewTitle = itemView.findViewById(R.id.tv_RecyclerTitle);
         }
     }
 
@@ -45,9 +48,13 @@ public class ContLocAdapter extends RecyclerView.Adapter<ContLocAdapter.ContLocH
     @Override
     public void onBindViewHolder(@NonNull ContLocHolder holder, int position) {
 
+//        String coord_contraction =
         ContainerLocation containerLocation = data.get(position);
 
+
         holder.titleTV.setText(containerLocation.getDescription());
+        holder.coordTV.setText(containerLocation.getGeo_coord0()+", "+containerLocation.getGeo_coord1());
+
 
     }
 

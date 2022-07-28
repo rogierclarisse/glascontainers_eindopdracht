@@ -76,8 +76,10 @@ public class ContainerViewModel extends AndroidViewModel {
 //                        );
                         JSONArray coordinaten = field.getJSONArray("geo_coord");
                         ContainerLocation currentLocation = new ContainerLocation(
-//                                coordinaten.get(0),
-//                                coordinaten.get(1)
+//
+                                field.getString("description"),
+                                coordinaten.getDouble(0),
+                                coordinaten.getDouble(1)
                         );
 
                         containerLocationArrayList.add(currentLocation);
