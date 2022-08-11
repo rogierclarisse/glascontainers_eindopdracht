@@ -49,7 +49,7 @@ public class ThirdFragment extends Fragment {
            // ContainerViewModel cvm =
             //demo
             LatLng coordBrussel = new LatLng(50.858712, 4.347446);
-            CameraUpdate moveToBrussels = CameraUpdateFactory.newLatLngZoom(coordBrussel, 16);
+            CameraUpdate moveToBrussels = CameraUpdateFactory.newLatLngZoom(coordBrussel, 10);
 
             myMap.animateCamera(moveToBrussels);
             myMap.getUiSettings().setZoomControlsEnabled(true);
@@ -61,16 +61,16 @@ public class ThirdFragment extends Fragment {
     };
 
     //de markers tekenen van de landen die in de singleton gedeclareerd zijn.
-    private void drawmarkers(){
-        for(Country currentCountry : CountrySingleton.INSTANCE.getCountries()){
-            Marker currentMarker = myMap.addMarker(new MarkerOptions()
-                    .position(currentCountry.getCoordinate())
-                    .title(currentCountry.getName())
-                    .snippet(currentCountry.getCapital())
-            );
-            currentMarker.setTag(currentCountry);
-        }
-    }
+//    private void drawmarkers(){
+//        for(Country currentCountry : CountrySingleton.INSTANCE.getCountries()){
+//            Marker currentMarker = myMap.addMarker(new MarkerOptions()
+//                    .position(currentCountry.getCoordinate())
+//                    .title(currentCountry.getName())
+//                    .snippet(currentCountry.getCapital())
+//            );
+//            currentMarker.setTag(currentCountry);
+//        }
+//    }
 
     private void drawlocations() {
         ContainerViewModel containerViewModel = new ViewModelProvider(getActivity()).get(ContainerViewModel.class);
