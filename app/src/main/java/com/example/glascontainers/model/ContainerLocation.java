@@ -2,10 +2,13 @@ package com.example.glascontainers.model;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class ContainerLocation {
+import java.io.Serializable;
+
+public class ContainerLocation implements Serializable {
 
     private String description;
     private double geo_coord0, geo_coord1;
+
 
 
     public ContainerLocation(String description, double geo_coord0, double geo_coord1) {

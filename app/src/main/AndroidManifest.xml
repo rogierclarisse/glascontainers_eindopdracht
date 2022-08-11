@@ -28,10 +28,10 @@
             </intent-filter>
         </activity>
 
-<!--        <meta-data android:name="com.google.android.geo.API_KEY"-->
-<!--            android:value="gcfdjdgjvk">-->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCEr5a7acVhgR_hu9YGu2ttaxc7rIi9f1c">
 
-<!--        </meta-data>-->
+        </meta-data>
     </application>
 
 </manifest>

@@ -24,7 +24,7 @@ import okhttp3.Response;
 public class ContainerViewModel extends AndroidViewModel {
 
     //object voor data die we binnentrekken om data in applicatie te tonen
-    private MutableLiveData<ArrayList<ContainerLocation>> containerLocations;
+    private MutableLiveData<ArrayList<ContainerLocation>> containerLocations; //verander van publc naar private om er in singleton aan te kunnen
     //threadpool aanmaken
     private ExecutorService mExecutorService = Executors.newFixedThreadPool(2);
 
@@ -65,16 +65,11 @@ public class ContainerViewModel extends AndroidViewModel {
                     //lo
                     while(i < nObjects){
                         JSONObject currentJSONElement = recordsArray.getJSONObject(i);
-
-//                        ContainerLocation currentLocation = new ContainerLocation(
-//                                currentJSONElement.getString("datasetid")
-//                                currentJSONElement.ge
-//                        );
                         JSONObject field = currentJSONElement.getJSONObject("fields");
-//                        ContainerLocation currentLocation = new ContainerLocation(
-//                                field.getString("description")
-//                        );
                         JSONArray coordinaten = field.getJSONArray("geo_coord");
+
+                        //hieronder maken we een nieuw ContainerLocation-object aan en
+                        // geven we die waarden uit de JSON
                         ContainerLocation currentLocation = new ContainerLocation(
 //
                                 field.getString("description"),
@@ -82,6 +77,7 @@ public class ContainerViewModel extends AndroidViewModel {
                                 coordinaten.getDouble(1)
                         );
 
+                        //object wordt in de ArrayList gezet
                         containerLocationArrayList.add(currentLocation);
                         i++;
                     }
@@ -92,6 +88,7 @@ public class ContainerViewModel extends AndroidViewModel {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                //Arraylist wordt in MutableLiveData gezet
                 containerLocations.postValue(containerLocationArrayList);
 
             }
