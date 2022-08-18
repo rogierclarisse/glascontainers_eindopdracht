@@ -3,6 +3,7 @@ package com.example.glascontainers.ui.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
@@ -49,7 +50,7 @@ public class ThirdFragment extends Fragment {
            // ContainerViewModel cvm =
             //demo
             LatLng coordBrussel = new LatLng(50.858712, 4.347446);
-            CameraUpdate moveToBrussels = CameraUpdateFactory.newLatLngZoom(coordBrussel, 10);
+            CameraUpdate moveToBrussels = CameraUpdateFactory.newLatLngZoom(coordBrussel, 12);
 
             myMap.animateCamera(moveToBrussels);
             myMap.getUiSettings().setZoomControlsEnabled(true);
@@ -132,6 +133,8 @@ public class ThirdFragment extends Fragment {
         mapView = view.findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(onMapReadyCallback);
+
+
     }
 
     @Override

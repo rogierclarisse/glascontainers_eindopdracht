@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -42,6 +43,9 @@ public class SecondFragment extends Fragment {
 
         //recycler view aanspreken
         RecyclerView rvLocations = view.findViewById(R.id.rv_locations);
+
+        TextView title = view.findViewById(R.id.tv_RecyclerTitle);
+        title.setText("Locations");
         //horizontale lijnen
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         rvLocations.setLayoutManager(mLayoutManager);

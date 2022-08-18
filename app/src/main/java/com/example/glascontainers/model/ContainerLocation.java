@@ -1,11 +1,18 @@
 package com.example.glascontainers.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
 
+@Entity
 public class ContainerLocation implements Serializable {
 
+    //primary key achteraf toegevoegd voor het maken van de database
+    @PrimaryKey(autoGenerate = true)
+    private Long id;
     private String description;
     private double geo_coord0, geo_coord1;
 
@@ -18,6 +25,15 @@ public class ContainerLocation implements Serializable {
     }
 
     public ContainerLocation() {
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    //extra getter voor primary key, setter niet nodig want automatisch
+    public Long getId() {
+        return id;
     }
 
     public String getDescription() {

@@ -1,11 +1,14 @@
 package com.example.glascontainers.model;
 
 import android.app.Application;
+import android.location.Location;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+
+import com.example.glascontainers.dao.LocationDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,9 +31,25 @@ public class ContainerViewModel extends AndroidViewModel {
     //threadpool aanmaken
     private ExecutorService mExecutorService = Executors.newFixedThreadPool(2);
 
+    //declareren van database
+    private LocationDatabase database;
+
     public ContainerViewModel(@NonNull Application application) {
         super(application);
         containerLocations = new MutableLiveData<>();
+        //database
+        database = LocationDatabase.getInstance(application);
+        //containerLocations = (MutableLiveData<ArrayList<ContainerLocation>>) database.getRepoDao().getAllContainerLocations();
+    }
+
+    //methode om locaties in de database op te slaan, op te roepen in getContainerLocations
+    public void insertLocation(ContainerLocation cl){
+        LocationDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                database.getRepoDao().insertContainerLocation(cl);
+            }
+        });
     }
 
     public MutableLiveData<ArrayList<ContainerLocation>> getContainerLocations() {
@@ -43,7 +62,7 @@ public class ContainerViewModel extends AndroidViewModel {
                     OkHttpClient mClient = new OkHttpClient();
 
                     Request mRequest = new Request.Builder()
-                            .url("https://opendata.brussel.be/api/records/1.0/search/?dataset=glass-containers&q=")
+                            .url("https://opendata.brussel.be/api/records/1.0/search/?dataset=glass-containers&q=&rows=100")
                             .get()
                             .build();
 
@@ -72,13 +91,15 @@ public class ContainerViewModel extends AndroidViewModel {
                         // geven we die waarden uit de JSON
                         ContainerLocation currentLocation = new ContainerLocation(
 //
-                                field.getString("description"),
+                                field.getString("description0"),
                                 coordinaten.getDouble(0),
                                 coordinaten.getDouble(1)
                         );
 
                         //object wordt in de ArrayList gezet
                         containerLocationArrayList.add(currentLocation);
+                        //object in database zetten
+                        insertLocation(currentLocation);
                         i++;
                     }
 
