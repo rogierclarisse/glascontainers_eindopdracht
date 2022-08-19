@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,7 +46,9 @@ public class SecondFragment extends Fragment {
         RecyclerView rvLocations = view.findViewById(R.id.rv_locations);
 
         TextView title = view.findViewById(R.id.tv_RecyclerTitle);
+//        Button viewId = view.findViewById(R.id.bt_viewid);
         title.setText("Locations");
+//        viewId.setText("view id");
         //horizontale lijnen
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         rvLocations.setLayoutManager(mLayoutManager);
@@ -56,12 +59,9 @@ public class SecondFragment extends Fragment {
         containerViewModel.getContainerLocations().observe(getViewLifecycleOwner(), new Observer<ArrayList<ContainerLocation>>() {
             @Override
             public void onChanged(ArrayList<ContainerLocation> containerLocations) {
-//                Log.d("TEST", "Data Loaded");
-//                Log.d("TEST", containerLocations.toString());
 
                 ContLocAdapter mAdapter = new ContLocAdapter(containerLocations);
                 rvLocations.setAdapter(mAdapter);
-
 
             }
         });

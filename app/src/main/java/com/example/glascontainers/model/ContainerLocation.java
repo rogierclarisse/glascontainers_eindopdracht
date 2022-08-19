@@ -14,18 +14,28 @@ public class ContainerLocation implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private Long id;
     private String description;
+//    private String recordId;
     private double geo_coord0, geo_coord1;
 
 
 
     public ContainerLocation(String description, double geo_coord0, double geo_coord1) {
         this.description = description;
+//        this.recordId = recordId;
         this.geo_coord0 = geo_coord0;
         this.geo_coord1 = geo_coord1;
     }
 
     public ContainerLocation() {
     }
+
+//    public String getRecordId() {
+//        return recordId;
+//    }
+//
+//    public void setRecordId(String recordId) {
+//        this.recordId = recordId;
+//    }
 
     public void setId(Long id) {
         this.id = id;

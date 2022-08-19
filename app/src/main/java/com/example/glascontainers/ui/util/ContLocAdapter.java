@@ -1,8 +1,10 @@
 package com.example.glascontainers.ui.util;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,15 +20,31 @@ public class ContLocAdapter extends RecyclerView.Adapter<ContLocAdapter.ContLocH
 
     class ContLocHolder extends RecyclerView.ViewHolder{
 
-//        private final TextView recyclerViewTitle;
         private final TextView titleTV;
         private final TextView coordTV;
+//        private final Button viewIdbutton;
+//
+        //object
+//        ContainerLocation containerLocation;
 
         public ContLocHolder(@NonNull View itemView) {
             super(itemView);
             titleTV = itemView.findViewById(R.id.tv_title);
             coordTV = itemView.findViewById(R.id.tv_coordinates);
-//            recyclerViewTitle = itemView.findViewById(R.id.tv_RecyclerTitle);
+//            viewIdbutton = itemView.findViewById(R.id.bt_viewid);
+//
+//
+//            itemView.setOnClickListener((v) -> {
+//                Log.d("test", "item clicked: ");
+//            } );
+//
+//            itemView.findViewById(R.id.bt_viewid).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                }
+//            });
+
         }
     }
 
@@ -48,14 +66,18 @@ public class ContLocAdapter extends RecyclerView.Adapter<ContLocAdapter.ContLocH
     @Override
     public void onBindViewHolder(@NonNull ContLocHolder holder, int position) {
 
+
+
 //        String coord_contraction =
         ContainerLocation containerLocation = data.get(position);
 
 
         holder.titleTV.setText(containerLocation.getDescription());
         holder.coordTV.setText(containerLocation.getGeo_coord0()+", "+containerLocation.getGeo_coord1());
+//        holder.viewIdbutton.setText(containerLocation.getDescription());
 
 
+//        holder.containerLocation = containerLocation;
     }
 
     @Override

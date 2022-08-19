@@ -74,7 +74,6 @@ public class ContainerViewModel extends AndroidViewModel {
                     JSONObject locationsObject = new JSONObject(responsePlainText);
                     //juiste array uit het object halen
                     JSONArray recordsArray = locationsObject.getJSONArray("records");
-//                    JSONObject recordsObject = locationsObject.getJSONObject("records");
 
 
                     //de lengte van recordsArray bepalen
@@ -92,6 +91,7 @@ public class ContainerViewModel extends AndroidViewModel {
                         ContainerLocation currentLocation = new ContainerLocation(
 //
                                 field.getString("description0"),
+//                                currentJSONElement.getString("recordid"),
                                 coordinaten.getDouble(0),
                                 coordinaten.getDouble(1)
                         );
