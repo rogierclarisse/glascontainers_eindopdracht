@@ -22,6 +22,7 @@ public class ContLocAdapter extends RecyclerView.Adapter<ContLocAdapter.ContLocH
 
         private final TextView titleTV;
         private final TextView coordTV;
+        private ContainerLocation contLoc;
 //        private final Button viewIdbutton;
 //
         //object
@@ -31,19 +32,23 @@ public class ContLocAdapter extends RecyclerView.Adapter<ContLocAdapter.ContLocH
             super(itemView);
             titleTV = itemView.findViewById(R.id.tv_title);
             coordTV = itemView.findViewById(R.id.tv_coordinates);
-//            viewIdbutton = itemView.findViewById(R.id.bt_viewid);
-//
-//
-//            itemView.setOnClickListener((v) -> {
-//                Log.d("test", "item clicked: ");
-//            } );
-//
-//            itemView.findViewById(R.id.bt_viewid).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                }
-//            });
+
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("test", "er wordt op de knop gedrukt");
+                }
+            });
+
+            itemView.findViewById(R.id.bt_viewid).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("test", "er wordt op de knop gedrukt met description ");
+                }
+            });
+
 
         }
     }
@@ -66,8 +71,6 @@ public class ContLocAdapter extends RecyclerView.Adapter<ContLocAdapter.ContLocH
     @Override
     public void onBindViewHolder(@NonNull ContLocHolder holder, int position) {
 
-
-
 //        String coord_contraction =
         ContainerLocation containerLocation = data.get(position);
 
@@ -78,6 +81,7 @@ public class ContLocAdapter extends RecyclerView.Adapter<ContLocAdapter.ContLocH
 
 
 //        holder.containerLocation = containerLocation;
+
     }
 
     @Override

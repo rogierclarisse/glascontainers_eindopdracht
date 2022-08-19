@@ -91,7 +91,7 @@ public class ContainerViewModel extends AndroidViewModel {
                         ContainerLocation currentLocation = new ContainerLocation(
 //
                                 field.getString("description0"),
-//                                currentJSONElement.getString("recordid"),
+                                currentJSONElement.getString("recordid"),
                                 coordinaten.getDouble(0),
                                 coordinaten.getDouble(1)
                         );

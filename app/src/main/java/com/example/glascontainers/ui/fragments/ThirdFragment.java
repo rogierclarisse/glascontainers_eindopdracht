@@ -3,12 +3,9 @@ package com.example.glascontainers.ui.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +16,6 @@ import com.example.glascontainers.R;
 import com.example.glascontainers.databinding.FragmentThirdBinding;
 import com.example.glascontainers.model.ContainerLocation;
 import com.example.glascontainers.model.ContainerViewModel;
-import com.example.glascontainers.model.Country;
-import com.example.glascontainers.model.CountrySingleton;
-import com.example.glascontainers.ui.util.ContLocAdapter;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -56,22 +50,10 @@ public class ThirdFragment extends Fragment {
             myMap.getUiSettings().setZoomControlsEnabled(true);
             myMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-//            drawmarkers();
             drawlocations();
         }
     };
 
-    //de markers tekenen van de landen die in de singleton gedeclareerd zijn.
-//    private void drawmarkers(){
-//        for(Country currentCountry : CountrySingleton.INSTANCE.getCountries()){
-//            Marker currentMarker = myMap.addMarker(new MarkerOptions()
-//                    .position(currentCountry.getCoordinate())
-//                    .title(currentCountry.getName())
-//                    .snippet(currentCountry.getCapital())
-//            );
-//            currentMarker.setTag(currentCountry);
-//        }
-//    }
 
     private void drawlocations() {
         ContainerViewModel containerViewModel = new ViewModelProvider(getActivity()).get(ContainerViewModel.class);
